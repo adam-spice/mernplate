@@ -1,0 +1,23 @@
+{
+  "name": "mernplate",
+  "version": "1.0.0",
+  "description": "A boilerplater for the MERN stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adam-spice/mernplate.git"
+  },
+  "keywords": [
+    "mern",
+    "react"
+  ],
+  "author": "Adam Spice",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adam-spice/mernplate/issues"
+  },
+  "homepage": "https://github.com/adam-spice/mernplate#readme"
+}

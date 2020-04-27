@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon app.js"
+    "client:dev": "npm run start --prefix client ",
+    "server:dev": "nodemon app.js",
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\""
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
     "nodemon": "^2.0.3"
   }
 }

@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const path = require("path");
 
 const httpLogger = require("./middleware/http-logger");
 const logger = require("./utils/logger");
@@ -25,14 +26,21 @@ app.use((req, res, next) => {
   next();
 });
 
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, "client/build")));
+
 // Main routes
 app.use("/api/users", usersRoutes);
+
+// Handles any requests that don't match the ones above
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
 // Handle not found routes
 app.use((req, res, next) => {
   throw new HttpError("Could not find this route.", 404);
 });
-
 // Delete uploaded file if creating item fails
 app.use((error, req, res, next) => {
   if (res.headersSent) {

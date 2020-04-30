@@ -27,14 +27,14 @@ app.use((req, res, next) => {
 });
 
 // Serve the static files from the React app
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "build")));
 
 // Main routes
 app.use("/api/users", usersRoutes);
 
 // Handles any requests that don't match the ones above
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+  res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
 // Handle not found routes
@@ -59,8 +59,8 @@ mongoose
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true
+      useCreateIndex: true,
     }
   )
   .then(() => app.listen(PORT, logger.info(`running on PORT ${PORT}`)))
-  .catch(error => logger.error(error));
+  .catch((error) => logger.error(error));

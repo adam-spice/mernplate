@@ -4,10 +4,14 @@
   "description": "A boilerplater for the MERN stack",
   "main": "app.js",
   "scripts": {
+    "client:install": "npm install --prefix client",
+    "client:build": "rm -rf build && npm run build --prefix client && cp -r client/build .",
+    "install:all": "npm install && npm run client:install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "client:dev": "npm run start --prefix client ",
     "server:dev": "nodemon app.js",
-    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\""
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "start": "npm run client:build && node app.js"
   },
   "repository": {
     "type": "git",
